@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1,
+maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+  <meta charset="utf-8">
+  <title>Raised by You</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <div class="skill">
+    <div class="outer">
+      <div class="inner" data-progress="100%" data-value="0">
+        <p id="demo2">€0</p>
+        <h2 id="demo" >€0</h2>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="perc">
+    <h5 id="here" step="0.1">0%</h5>
+  </div>
+
+  <script>
+  setInterval(function () {document.getElementById("mybutton").click();}, 1000);
+  let money = null;
+  let total = null;
+
+  function buttonClickRef() {
+
+
+    fetch("https://api.raisedforyou.com/api/v1/sessions/17AED0/donations", {
+        method: 'GET'
+      })
+
+      .then(result => result.json())
+      .then(data => {
+        console.log(data[0].amount); total = 0;
+          for (var c = 0; c < data.length; c++) {
+          total += data[c].amount;}
+      })
+
+
+
+
+
+
+    var i = 0;
+    var perc = 0;
+
+
+
+      perc = Math.round((total / 100)+891);
+      //with button one manual inc
+      //perc += +document.getElementById("donation").value + (money/100);
+      document.getElementById('here').innerHTML = percentage(perc) + "%";
+      document.getElementById('demo2').style.height =
+        (125 - percentage(perc)) + "%";
+
+
+
+
+      i = Math.round((total / 100)+891);
+      //with button one manual inc
+      //i += +document.getElementById("donation").value+ (money/100);
+      document.getElementById('demo').innerHTML = "€" + i;
+      document.getElementById('demo2').innerHTML = "€" + i;
+    }
+
+    function percentage(per) {
+      return Math.round((100 / 1000) * per);
+    }
+
+    $(document).ready(function() {
+      var skillBar = $('.inner');
+      var skillVal = skillBar.attr("data-progress");
+      $(skillBar).animate({
+        height: skillVal
+      }, 2100);
+
+    })
+  </script>
+</head>
+
+<body>
+
+  <img src="logo.png" class="logo" width="200px" height="200px" alt="logo">
+  <img src="qr.png" class="qrCode" width="160px" height="160px" alt="qr">
+  <img src="3.png" class="raised" width="400px" height="auto" alt="logo">
+
+  <button class="btn" id="mybutton" onclick="buttonClickRef()">
+    Refresh</button>
+
+  <!-- Manual input area
+  <input type="text" id="donation" background-color="goldenrod"
+  name="quantity" min="1" max="5">
+-->
+
+
+
+</body>
+
+</html>
