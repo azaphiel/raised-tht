@@ -4,9 +4,43 @@ body {
   width: 1670px;
   height: 97%;
   font-family: arial;
-  background-color: black;
+
+}
+canvas {
+
+    z-index: -1;
+    position: absolute;
 }
 
+.hat{
+  width: 200px;
+  height: 110px;
+  right: 0;
+  position: absolute;
+  top: 777px;
+}
+
+.banner{
+  width: 89%;
+  height: 150px;
+  top: 0;
+  background: url(resized-150.png);
+  position: absolute;
+  margin-left: 180px;
+  background-repeat: repeat-x;
+}
+
+.sparkle{
+  width: 1500px;
+  height: 343px;
+  position: absolute;
+  background-repeat:repeat-x;
+  background: url(sparkles.png);
+  top: 300px;
+  margin-left: 150px;
+  z-index: 1;
+
+}
 .outer {
   width: 100%;
   height: 386px;
@@ -28,7 +62,7 @@ body {
 .inner h2 {
   font-size: 500px;
   margin-top: -95px;
-  background:  url(color3.jpg);
+  background:  url(color4.jpeg);
   animation: animateMid 15s linear infinite;
   -webkit-background-clip: text;
   color: rgba(255, 255, 255, .1);
@@ -53,7 +87,7 @@ p{
   margin: 0;
   position: absolute;
   font-weight: bold;
-  background: white;
+  background: gray;
 -webkit-background-clip: text;
 
 }
@@ -66,7 +100,7 @@ p{
 font-family:arial;
   font-size: 110px;
   text-align: center;
-  color: white;
+  color: gray;
 }
 
 .logo {
@@ -78,12 +112,12 @@ font-family:arial;
 
 .qrCode {
   position: absolute;
-  right: -7%;
-  top: 84%;
+  right: 0%;
+  top: 86%;
 }
 .raised{
   left: 0;
-  top: 90%;
+  top: 95%;
   position: absolute;
 
 
